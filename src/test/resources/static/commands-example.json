@@ -1,0 +1,5 @@
+[
+  {"time": 987, "commandType": "beginPath", "parameters": null},
+  {"time": 987, "commandType": "setPenColor", "parameters": "black"},
+  {"time": 987, "commandType": "moveTo", "parameters": {"x": 850, "y": 250}}
+]

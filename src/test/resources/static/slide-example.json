@@ -1,0 +1,32 @@
+{
+  "presentationId": 1,
+  "type": "raster",
+  "order": 1,
+  "commands": [
+    {
+      "time": 987,
+      "commandType": "beginPath",
+      "parameters": null
+    },
+    {
+      "time": 987,
+      "commandType": "setPenColor",
+      "parameters": "\"black\""
+    },
+    {
+      "time": 987,
+      "commandType": "setPenWidth",
+      "parameters": "1"
+    },
+    {
+      "time": 987,
+      "commandType": "moveTo",
+      "parameters": "{\"x\":850,\"y\":250}"
+    },
+    {
+      "time": 1010,
+      "commandType": "lineTo",
+      "parameters": "{\"x\":850,\"y\":250}"
+    }
+  ]
+}
