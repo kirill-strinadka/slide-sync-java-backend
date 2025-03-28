@@ -7,17 +7,17 @@ import com.kstrinadka.slidesyncbackend.model.Slide;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class SlideService {
     private final SlideRepository slideRepository;
-    private final UniversalMapper universalMapper;
+    private final UniversalMapper mapper;
 
     public Slide createSlide(SlideModificationDTO slideDTO) {
-        Slide entity = universalMapper.toEntity(slideDTO);
-
+        Slide entity = mapper.toEntity(slideDTO);
         return slideRepository.save(entity);
     }
 
@@ -26,14 +26,23 @@ public class SlideService {
                 .orElseThrow(() -> new RuntimeException("Slide not found"));
     }
 
+    public List<Slide> getSlides() {
+        return slideRepository.findAll();
+    }
+
     public Slide updateSlide(String id, SlideModificationDTO slideDTO) {
         Slide slide = slideRepository.findById(UUID.fromString(id))
                 .orElseThrow(() -> new RuntimeException("Slide not found"));
 
-        slide.setType(slideDTO.getType());
-        slide.setOrder(slideDTO.getOrder());
+        SlideModificationDTO slideModificationDTO = new SlideModificationDTO()
+                .setId(id)
+                .setType(slideDTO.getType())
+                .setOrder(slideDTO.getOrder())
+                .setCommands(slideDTO.getCommands());
 
-        return slideRepository.save(slide);
+        return slideRepository.save(
+                mapper.toEntity(slideModificationDTO)
+        );
     }
 
     public void deleteSlide(String id) {

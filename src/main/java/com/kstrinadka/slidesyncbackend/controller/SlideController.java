@@ -7,7 +7,10 @@ import com.kstrinadka.slidesyncbackend.service.SlideService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@CrossOrigin
 @RequestMapping("/slides")
 @RequiredArgsConstructor
 public class SlideController {
@@ -22,6 +25,11 @@ public class SlideController {
     @GetMapping("/{id}")
     public SlideDTO getSlide(@PathVariable String id) {
         return mapper.map(slideService.getSlide(id));
+    }
+
+    @GetMapping
+    public List<SlideDTO> getSlides() {
+        return mapper.map(slideService.getSlides());
     }
 
     @PutMapping("/{id}")
