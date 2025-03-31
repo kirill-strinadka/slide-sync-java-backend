@@ -14,6 +14,6 @@ import lombok.experimental.Accessors;
 public class SlideModificationDTO {
     private String id;
     private String type;
-    private int order;
+//    private int order;
     private String commands;
 }

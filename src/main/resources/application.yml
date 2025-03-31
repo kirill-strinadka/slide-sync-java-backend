@@ -1,0 +1,18 @@
+
+server:
+  port: 3000
+
+spring:
+
+  application:
+    name: slide-sync-backend
+
+  liquibase:
+    change-log: db/migration/db.changelog-master.xml
+
+
+
+
+
+
+

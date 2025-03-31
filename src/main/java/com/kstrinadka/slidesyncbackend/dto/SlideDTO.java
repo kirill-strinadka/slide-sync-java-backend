@@ -16,6 +16,6 @@ import java.util.UUID;
 public class SlideDTO {
     private UUID id;
     private String type;
-    private int order;
+//    private int order;
     private String commands;
 }

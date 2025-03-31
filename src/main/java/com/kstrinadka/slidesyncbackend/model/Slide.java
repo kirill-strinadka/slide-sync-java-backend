@@ -21,7 +21,7 @@ public class Slide {
     private UUID id;
 
     private String type;
-    private int order;
+//    private int order;
     private String commands;
 
     // todo - картинки лучше в Amazon S3 хранить

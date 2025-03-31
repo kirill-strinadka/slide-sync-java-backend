@@ -37,7 +37,6 @@ public class SlideService {
         SlideModificationDTO slideModificationDTO = new SlideModificationDTO()
                 .setId(id)
                 .setType(slideDTO.getType())
-                .setOrder(slideDTO.getOrder())
                 .setCommands(slideDTO.getCommands());
 
         return slideRepository.save(
