@@ -10,7 +10,19 @@ spring:
   liquibase:
     change-log: db/migration/db.changelog-master.xml
 
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://db:5432/slidedb}
+    username: ${SPRING_DATASOURCE_USERNAME:slideuser}
+    password: ${SPRING_DATASOURCE_PASSWORD:slidepass}
+    driver-class-name: org.postgresql.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: none # Отключаем автоматическое создание схемы, так как используем Liquibase
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 
 

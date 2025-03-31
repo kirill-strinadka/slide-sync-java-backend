@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/slidedb
+      - SPRING_DATASOURCE_USERNAME=slideuser
+      - SPRING_DATASOURCE_PASSWORD=slidepass
+    networks:
+      - app-network
+
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=slidedb
+      - POSTGRES_USER=slideuser
+      - POSTGRES_PASSWORD=slidepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
