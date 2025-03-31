@@ -13,15 +13,30 @@ import java.util.UUID;
 public abstract class UniversalMapper {
 
 
-    public abstract SlideDTO map(Slide list);
+    @Mapping(target = "commands", expression = "java(deserializeCommands(slide.getCommands()))")
+    public abstract SlideDTO map(Slide slide);
 
     public abstract List<SlideDTO> map(List<Slide> list);
 
     @Mapping(target = "id", expression = "java(stringToUUID(dto.getId()))")
+    @Mapping(target = "commands", expression = "java(serializeCommands(dto.getCommands()))")
     public abstract Slide toEntity(SlideModificationDTO dto);
 
     UUID stringToUUID(String id) {
         return id != null ? UUID.fromString(id) : null;
     }
 
+    String serializeCommands(List<String> commands) {
+        if (commands == null || commands.isEmpty()) {
+            return null;
+        }
+        return String.join(",", commands);
+    }
+
+    List<String> deserializeCommands(String commands) {
+        if (commands == null || commands.isEmpty()) {
+            return List.of(); // Возвращаем пустой список
+        }
+        return List.of(commands.split(","));
+    }
 }

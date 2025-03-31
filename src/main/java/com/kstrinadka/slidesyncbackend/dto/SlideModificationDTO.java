@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,5 +17,5 @@ public class SlideModificationDTO {
     private String id;
     private String type;
 //    private int order;
-    private String commands;
+    private List<String> commands;
 }

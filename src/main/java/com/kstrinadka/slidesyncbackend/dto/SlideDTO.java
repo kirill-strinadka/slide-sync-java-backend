@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -17,5 +18,5 @@ public class SlideDTO {
     private UUID id;
     private String type;
 //    private int order;
-    private String commands;
+    private List<String> commands;
 }
